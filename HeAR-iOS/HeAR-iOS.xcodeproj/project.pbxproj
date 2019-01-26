@@ -7,48 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62E6275821FCC6FF0013FD83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6275721FCC6FF0013FD83 /* AppDelegate.swift */; };
-		62E6275A21FCC6FF0013FD83 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E6275921FCC6FF0013FD83 /* art.scnassets */; };
-		62E6275C21FCC6FF0013FD83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6275B21FCC6FF0013FD83 /* ViewController.swift */; };
-		62E6275F21FCC6FF0013FD83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E6275D21FCC6FF0013FD83 /* Main.storyboard */; settings = {ASSET_TAGS = (recordButton, ); }; };
-		62E6276121FCC7000013FD83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E6276021FCC7000013FD83 /* Assets.xcassets */; };
-		62E6276421FCC7000013FD83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E6276221FCC7000013FD83 /* LaunchScreen.storyboard */; };
-		62E6276F21FCC7000013FD83 /* HeAR_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6276E21FCC7000013FD83 /* HeAR_iOSTests.swift */; };
+		62ABE33821FCCEF5000F4E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABE33721FCCEF5000F4E83 /* AppDelegate.swift */; };
+		62ABE33A21FCCEF5000F4E83 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62ABE33921FCCEF5000F4E83 /* Scene.sks */; };
+		62ABE33C21FCCEF5000F4E83 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABE33B21FCCEF5000F4E83 /* Scene.swift */; };
+		62ABE33E21FCCEF5000F4E83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABE33D21FCCEF5000F4E83 /* ViewController.swift */; };
+		62ABE34121FCCEF5000F4E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62ABE33F21FCCEF5000F4E83 /* Main.storyboard */; };
+		62ABE34321FCCEF6000F4E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62ABE34221FCCEF6000F4E83 /* Assets.xcassets */; };
+		62ABE34621FCCEF6000F4E83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62ABE34421FCCEF6000F4E83 /* LaunchScreen.storyboard */; };
+		62ABE35121FCCEF6000F4E83 /* HeAR_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABE35021FCCEF6000F4E83 /* HeAR_iOSTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		62E6276B21FCC7000013FD83 /* PBXContainerItemProxy */ = {
+		62ABE34D21FCCEF6000F4E83 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 62E6274C21FCC6FF0013FD83 /* Project object */;
+			containerPortal = 62ABE32C21FCCEF5000F4E83 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 62E6275321FCC6FF0013FD83;
+			remoteGlobalIDString = 62ABE33321FCCEF5000F4E83;
 			remoteInfo = "HeAR-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		62E6275421FCC6FF0013FD83 /* HeAR-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HeAR-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		62E6275721FCC6FF0013FD83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		62E6275921FCC6FF0013FD83 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		62E6275B21FCC6FF0013FD83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		62E6275E21FCC6FF0013FD83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		62E6276021FCC7000013FD83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		62E6276321FCC7000013FD83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		62E6276521FCC7000013FD83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		62E6276A21FCC7000013FD83 /* HeAR-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HeAR-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		62E6276E21FCC7000013FD83 /* HeAR_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeAR_iOSTests.swift; sourceTree = "<group>"; };
-		62E6277021FCC7000013FD83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62ABE33421FCCEF5000F4E83 /* HeAR-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HeAR-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		62ABE33721FCCEF5000F4E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		62ABE33921FCCEF5000F4E83 /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
+		62ABE33B21FCCEF5000F4E83 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
+		62ABE33D21FCCEF5000F4E83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		62ABE34021FCCEF5000F4E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		62ABE34221FCCEF6000F4E83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		62ABE34521FCCEF6000F4E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		62ABE34721FCCEF6000F4E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		62ABE34C21FCCEF6000F4E83 /* HeAR-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HeAR-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		62ABE35021FCCEF6000F4E83 /* HeAR_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeAR_iOSTests.swift; sourceTree = "<group>"; };
+		62ABE35221FCCEF6000F4E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		62E6275121FCC6FF0013FD83 /* Frameworks */ = {
+		62ABE33121FCCEF5000F4E83 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62E6276721FCC7000013FD83 /* Frameworks */ = {
+		62ABE34921FCCEF6000F4E83 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -58,43 +60,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		62E6274B21FCC6FF0013FD83 = {
+		62ABE32B21FCCEF5000F4E83 = {
 			isa = PBXGroup;
 			children = (
-				62E6275621FCC6FF0013FD83 /* HeAR-iOS */,
-				62E6276D21FCC7000013FD83 /* HeAR-iOSTests */,
-				62E6275521FCC6FF0013FD83 /* Products */,
+				62ABE33621FCCEF5000F4E83 /* HeAR-iOS */,
+				62ABE34F21FCCEF6000F4E83 /* HeAR-iOSTests */,
+				62ABE33521FCCEF5000F4E83 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		62E6275521FCC6FF0013FD83 /* Products */ = {
+		62ABE33521FCCEF5000F4E83 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				62E6275421FCC6FF0013FD83 /* HeAR-iOS.app */,
-				62E6276A21FCC7000013FD83 /* HeAR-iOSTests.xctest */,
+				62ABE33421FCCEF5000F4E83 /* HeAR-iOS.app */,
+				62ABE34C21FCCEF6000F4E83 /* HeAR-iOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		62E6275621FCC6FF0013FD83 /* HeAR-iOS */ = {
+		62ABE33621FCCEF5000F4E83 /* HeAR-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				62E6275721FCC6FF0013FD83 /* AppDelegate.swift */,
-				62E6275921FCC6FF0013FD83 /* art.scnassets */,
-				62E6275B21FCC6FF0013FD83 /* ViewController.swift */,
-				62E6275D21FCC6FF0013FD83 /* Main.storyboard */,
-				62E6276021FCC7000013FD83 /* Assets.xcassets */,
-				62E6276221FCC7000013FD83 /* LaunchScreen.storyboard */,
-				62E6276521FCC7000013FD83 /* Info.plist */,
+				62ABE33721FCCEF5000F4E83 /* AppDelegate.swift */,
+				62ABE33921FCCEF5000F4E83 /* Scene.sks */,
+				62ABE33B21FCCEF5000F4E83 /* Scene.swift */,
+				62ABE33D21FCCEF5000F4E83 /* ViewController.swift */,
+				62ABE33F21FCCEF5000F4E83 /* Main.storyboard */,
+				62ABE34221FCCEF6000F4E83 /* Assets.xcassets */,
+				62ABE34421FCCEF6000F4E83 /* LaunchScreen.storyboard */,
+				62ABE34721FCCEF6000F4E83 /* Info.plist */,
 			);
 			path = "HeAR-iOS";
 			sourceTree = "<group>";
 		};
-		62E6276D21FCC7000013FD83 /* HeAR-iOSTests */ = {
+		62ABE34F21FCCEF6000F4E83 /* HeAR-iOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				62E6276E21FCC7000013FD83 /* HeAR_iOSTests.swift */,
-				62E6277021FCC7000013FD83 /* Info.plist */,
+				62ABE35021FCCEF6000F4E83 /* HeAR_iOSTests.swift */,
+				62ABE35221FCCEF6000F4E83 /* Info.plist */,
 			);
 			path = "HeAR-iOSTests";
 			sourceTree = "<group>";
@@ -102,13 +105,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		62E6275321FCC6FF0013FD83 /* HeAR-iOS */ = {
+		62ABE33321FCCEF5000F4E83 /* HeAR-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 62E6277321FCC7000013FD83 /* Build configuration list for PBXNativeTarget "HeAR-iOS" */;
+			buildConfigurationList = 62ABE35521FCCEF6000F4E83 /* Build configuration list for PBXNativeTarget "HeAR-iOS" */;
 			buildPhases = (
-				62E6275021FCC6FF0013FD83 /* Sources */,
-				62E6275121FCC6FF0013FD83 /* Frameworks */,
-				62E6275221FCC6FF0013FD83 /* Resources */,
+				62ABE33021FCCEF5000F4E83 /* Sources */,
+				62ABE33121FCCEF5000F4E83 /* Frameworks */,
+				62ABE33221FCCEF5000F4E83 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -116,31 +119,31 @@
 			);
 			name = "HeAR-iOS";
 			productName = "HeAR-iOS";
-			productReference = 62E6275421FCC6FF0013FD83 /* HeAR-iOS.app */;
+			productReference = 62ABE33421FCCEF5000F4E83 /* HeAR-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		62E6276921FCC7000013FD83 /* HeAR-iOSTests */ = {
+		62ABE34B21FCCEF6000F4E83 /* HeAR-iOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 62E6277621FCC7000013FD83 /* Build configuration list for PBXNativeTarget "HeAR-iOSTests" */;
+			buildConfigurationList = 62ABE35821FCCEF6000F4E83 /* Build configuration list for PBXNativeTarget "HeAR-iOSTests" */;
 			buildPhases = (
-				62E6276621FCC7000013FD83 /* Sources */,
-				62E6276721FCC7000013FD83 /* Frameworks */,
-				62E6276821FCC7000013FD83 /* Resources */,
+				62ABE34821FCCEF6000F4E83 /* Sources */,
+				62ABE34921FCCEF6000F4E83 /* Frameworks */,
+				62ABE34A21FCCEF6000F4E83 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				62E6276C21FCC7000013FD83 /* PBXTargetDependency */,
+				62ABE34E21FCCEF6000F4E83 /* PBXTargetDependency */,
 			);
 			name = "HeAR-iOSTests";
 			productName = "HeAR-iOSTests";
-			productReference = 62E6276A21FCC7000013FD83 /* HeAR-iOSTests.xctest */;
+			productReference = 62ABE34C21FCCEF6000F4E83 /* HeAR-iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		62E6274C21FCC6FF0013FD83 /* Project object */ = {
+		62ABE32C21FCCEF5000F4E83 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				KnownAssetTags = (
@@ -150,16 +153,16 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Francesco Valela";
 				TargetAttributes = {
-					62E6275321FCC6FF0013FD83 = {
+					62ABE33321FCCEF5000F4E83 = {
 						CreatedOnToolsVersion = 10.1;
 					};
-					62E6276921FCC7000013FD83 = {
+					62ABE34B21FCCEF6000F4E83 = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 62E6275321FCC6FF0013FD83;
+						TestTargetID = 62ABE33321FCCEF5000F4E83;
 					};
 				};
 			};
-			buildConfigurationList = 62E6274F21FCC6FF0013FD83 /* Build configuration list for PBXProject "HeAR-iOS" */;
+			buildConfigurationList = 62ABE32F21FCCEF5000F4E83 /* Build configuration list for PBXProject "HeAR-iOS" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -167,30 +170,30 @@
 				en,
 				Base,
 			);
-			mainGroup = 62E6274B21FCC6FF0013FD83;
-			productRefGroup = 62E6275521FCC6FF0013FD83 /* Products */;
+			mainGroup = 62ABE32B21FCCEF5000F4E83;
+			productRefGroup = 62ABE33521FCCEF5000F4E83 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				62E6275321FCC6FF0013FD83 /* HeAR-iOS */,
-				62E6276921FCC7000013FD83 /* HeAR-iOSTests */,
+				62ABE33321FCCEF5000F4E83 /* HeAR-iOS */,
+				62ABE34B21FCCEF6000F4E83 /* HeAR-iOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		62E6275221FCC6FF0013FD83 /* Resources */ = {
+		62ABE33221FCCEF5000F4E83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62E6275A21FCC6FF0013FD83 /* art.scnassets in Resources */,
-				62E6276421FCC7000013FD83 /* LaunchScreen.storyboard in Resources */,
-				62E6276121FCC7000013FD83 /* Assets.xcassets in Resources */,
-				62E6275F21FCC6FF0013FD83 /* Main.storyboard in Resources */,
+				62ABE33A21FCCEF5000F4E83 /* Scene.sks in Resources */,
+				62ABE34621FCCEF6000F4E83 /* LaunchScreen.storyboard in Resources */,
+				62ABE34321FCCEF6000F4E83 /* Assets.xcassets in Resources */,
+				62ABE34121FCCEF5000F4E83 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62E6276821FCC7000013FD83 /* Resources */ = {
+		62ABE34A21FCCEF6000F4E83 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -200,46 +203,47 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		62E6275021FCC6FF0013FD83 /* Sources */ = {
+		62ABE33021FCCEF5000F4E83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62E6275C21FCC6FF0013FD83 /* ViewController.swift in Sources */,
-				62E6275821FCC6FF0013FD83 /* AppDelegate.swift in Sources */,
+				62ABE33E21FCCEF5000F4E83 /* ViewController.swift in Sources */,
+				62ABE33C21FCCEF5000F4E83 /* Scene.swift in Sources */,
+				62ABE33821FCCEF5000F4E83 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		62E6276621FCC7000013FD83 /* Sources */ = {
+		62ABE34821FCCEF6000F4E83 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62E6276F21FCC7000013FD83 /* HeAR_iOSTests.swift in Sources */,
+				62ABE35121FCCEF6000F4E83 /* HeAR_iOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		62E6276C21FCC7000013FD83 /* PBXTargetDependency */ = {
+		62ABE34E21FCCEF6000F4E83 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 62E6275321FCC6FF0013FD83 /* HeAR-iOS */;
-			targetProxy = 62E6276B21FCC7000013FD83 /* PBXContainerItemProxy */;
+			target = 62ABE33321FCCEF5000F4E83 /* HeAR-iOS */;
+			targetProxy = 62ABE34D21FCCEF6000F4E83 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		62E6275D21FCC6FF0013FD83 /* Main.storyboard */ = {
+		62ABE33F21FCCEF5000F4E83 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				62E6275E21FCC6FF0013FD83 /* Base */,
+				62ABE34021FCCEF5000F4E83 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		62E6276221FCC7000013FD83 /* LaunchScreen.storyboard */ = {
+		62ABE34421FCCEF6000F4E83 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				62E6276321FCC7000013FD83 /* Base */,
+				62ABE34521FCCEF6000F4E83 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -247,7 +251,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		62E6277121FCC7000013FD83 /* Debug */ = {
+		62ABE35321FCCEF6000F4E83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -308,7 +312,7 @@
 			};
 			name = Debug;
 		};
-		62E6277221FCC7000013FD83 /* Release */ = {
+		62ABE35421FCCEF6000F4E83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -363,12 +367,12 @@
 			};
 			name = Release;
 		};
-		62E6277421FCC7000013FD83 /* Debug */ = {
+		62ABE35621FCCEF6000F4E83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XNX37K6K44;
+				DEVELOPMENT_TEAM = M34F646G6T;
 				INFOPLIST_FILE = "HeAR-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -381,12 +385,12 @@
 			};
 			name = Debug;
 		};
-		62E6277521FCC7000013FD83 /* Release */ = {
+		62ABE35721FCCEF6000F4E83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XNX37K6K44;
+				DEVELOPMENT_TEAM = M34F646G6T;
 				INFOPLIST_FILE = "HeAR-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -399,7 +403,7 @@
 			};
 			name = Release;
 		};
-		62E6277721FCC7000013FD83 /* Debug */ = {
+		62ABE35921FCCEF6000F4E83 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -420,7 +424,7 @@
 			};
 			name = Debug;
 		};
-		62E6277821FCC7000013FD83 /* Release */ = {
+		62ABE35A21FCCEF6000F4E83 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -444,34 +448,34 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		62E6274F21FCC6FF0013FD83 /* Build configuration list for PBXProject "HeAR-iOS" */ = {
+		62ABE32F21FCCEF5000F4E83 /* Build configuration list for PBXProject "HeAR-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				62E6277121FCC7000013FD83 /* Debug */,
-				62E6277221FCC7000013FD83 /* Release */,
+				62ABE35321FCCEF6000F4E83 /* Debug */,
+				62ABE35421FCCEF6000F4E83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		62E6277321FCC7000013FD83 /* Build configuration list for PBXNativeTarget "HeAR-iOS" */ = {
+		62ABE35521FCCEF6000F4E83 /* Build configuration list for PBXNativeTarget "HeAR-iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				62E6277421FCC7000013FD83 /* Debug */,
-				62E6277521FCC7000013FD83 /* Release */,
+				62ABE35621FCCEF6000F4E83 /* Debug */,
+				62ABE35721FCCEF6000F4E83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		62E6277621FCC7000013FD83 /* Build configuration list for PBXNativeTarget "HeAR-iOSTests" */ = {
+		62ABE35821FCCEF6000F4E83 /* Build configuration list for PBXNativeTarget "HeAR-iOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				62E6277721FCC7000013FD83 /* Debug */,
-				62E6277821FCC7000013FD83 /* Release */,
+				62ABE35921FCCEF6000F4E83 /* Debug */,
+				62ABE35A21FCCEF6000F4E83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 62E6274C21FCC6FF0013FD83 /* Project object */;
+	rootObject = 62ABE32C21FCCEF5000F4E83 /* Project object */;
 }
