@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Need microphone to detect spoken words and add subtitles</string>
 	<key>NSSpeechRecognitionUsageDescription</key>
 	<string>Application requires speech recognition for subtitle generation</string>
 	<key>CFBundleDevelopmentRegion</key>
