@@ -23,16 +23,21 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
   
     @IBOutlet var sceneView: ARSKView!
     
-    @IBOutlet var subtitles: UITextView!
-    
     private let audioEngine = AVAudioEngine()
     
     @IBOutlet var recordButton: UIButton!
     
+    var labelNode: SKLabelNode?
+    
+    var shadowNode: SKLabelNode?
+    
+    let attributes: [NSAttributedString.Key : Any] = [.strokeWidth: -2.0,
+                                                      .strokeColor: UIColor.black,
+                                                      .foregroundColor: UIColor.white]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        subtitles.textColor = .white
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -48,8 +53,6 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
-        
-        self.applyDropShadow()
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -107,9 +110,27 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
         // Create and configure a node for the anchor added to the view's session.
-        let labelNode = SKLabelNode(text: "👾")
-        labelNode.horizontalAlignmentMode = .center
-        labelNode.verticalAlignmentMode = .center
+        
+        //labelNode = SKLabelNode(text: "")
+        labelNode = SKLabelNode(text: "")
+        labelNode?.fontColor = .white
+        labelNode?.horizontalAlignmentMode = .center
+        labelNode?.verticalAlignmentMode = .center
+        labelNode?.numberOfLines = 2
+        labelNode?.preferredMaxLayoutWidth = CGFloat(126.5)
+        labelNode?.lineBreakMode = .byClipping
+        
+        shadowNode = SKLabelNode(text: "")
+        shadowNode?.fontColor = .black
+        shadowNode?.horizontalAlignmentMode = .center
+        shadowNode?.verticalAlignmentMode = .center
+        shadowNode?.numberOfLines = 2
+        shadowNode?.fontSize = (labelNode?.fontSize ?? 0) + 10
+        shadowNode?.zPosition = (labelNode?.zPosition ?? 0) + 1
+        shadowNode?.preferredMaxLayoutWidth = CGFloat(126.5)
+        shadowNode?.lineBreakMode = .byClipping
+    
+        
         return labelNode;
     }
     
@@ -129,15 +150,9 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     }
     
     func replaceSubtitles(newSubs: String) {
-        self.subtitles.text = newSubs
-    }
-    
-    func applyDropShadow() {
-        self.subtitles.layer.shadowColor = UIColor.black.cgColor
-        self.subtitles.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.subtitles.layer.shadowOpacity = 1.0
-        self.subtitles.layer.shadowRadius = 1.0
-        self.subtitles.clipsToBounds = false
+        self.labelNode?.text = newSubs
+        self.shadowNode?.text = newSubs
+        
     }
   
     private func startRecording() throws {

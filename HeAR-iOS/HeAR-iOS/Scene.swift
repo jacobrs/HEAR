@@ -29,7 +29,7 @@ class Scene: SKScene {
             
             // Create a transform with a translation of 0.2 meters in front of the camera
             var translation = matrix_identity_float4x4
-            translation.columns.3.z = -0.2
+            translation.columns.3.z = -0.5
             let transform = simd_mul(currentFrame.camera.transform, translation)
             
             // Add a new anchor to the session
