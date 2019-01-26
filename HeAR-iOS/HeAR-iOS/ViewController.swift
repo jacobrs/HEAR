@@ -11,7 +11,7 @@ import SpriteKit
 import ARKit
 import Speech
 
-class ViewController: UIViewController, ARSCNViewDelegate, SFSpeechRecognizerDelegate {
+class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDelegate {
 
     private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     
@@ -31,6 +31,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, SFSpeechRecognizerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        subtitles.textColor = .white
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -126,12 +128,8 @@ class ViewController: UIViewController, ARSCNViewDelegate, SFSpeechRecognizerDel
         
     }
     
-    @IBAction func addSubtitles(_ sender: Any) {
-        print("inside")
-        guard let prevText = self.subtitles.text else {
-            return
-        }
-        self.subtitles.text.append("\(prevText) ")
+    func replaceSubtitles(newSubs: String) {
+        self.subtitles.text = newSubs
     }
     
     func applyDropShadow() {
@@ -169,7 +167,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, SFSpeechRecognizerDel
             if let result = result {
                 // Update the text view with the results.
                 self.recognizedText = result.bestTranscription.formattedString
-                print(self.recognizedText)
+                self.replaceSubtitles(newSubs: self.recognizedText)
                 isFinal = result.isFinal
             }
             
