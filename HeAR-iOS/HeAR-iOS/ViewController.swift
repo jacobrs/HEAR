@@ -32,7 +32,7 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     
     private var scanTimer: Timer?
     
-    private var faceView: UIView?
+    private var scannedFaceViews = [UIView]()
     
     //get the orientation of the image that correspond's to the current device orientation
     private var imageOrientation: CGImagePropertyOrientation {
@@ -246,6 +246,10 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     @objc
     private func scanForFaces() {
         
+        //remove the test views and empty the array that was keeping a reference to them
+        _ = scannedFaceViews.map { $0.removeFromSuperview() }
+        scannedFaceViews.removeAll()
+        
         //get the captured image of the ARSession's current frame
         guard let capturedImage = sceneView.session.currentFrame?.capturedImage else { return }
         
@@ -253,16 +257,17 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         
         let detectFaceRequest = VNDetectFaceRectanglesRequest { (request, error) in
             
-            //remove the test views and empty the array that was keeping a reference to them
-            self.faceView?.removeFromSuperview()
-            
             DispatchQueue.main.async {
                 //Loop through the resulting faces and add a red UIView on top of them.
                 if let faces = request.results as? [VNFaceObservation] {
-                    if (!faces.isEmpty) {
-                        let faceView = UIView(frame: self.faceFrame(from: faces[0].boundingBox))
+                    for face in faces {
+                        let faceView = UIView(frame: self.faceFrame(from: face.boundingBox))
+                        
                         faceView.backgroundColor = .red
+                        
                         self.sceneView.addSubview(faceView)
+                        
+                        self.scannedFaceViews.append(faceView)
                     }
                 }
             }
