@@ -42,6 +42,17 @@
                                 <connections>
                                     <action selector="addSubtitles:" destination="BV1-FR-VrT" eventType="touchUpInside" id="gIV-NR-Gn7"/>
                                 </connections>
+                            </button>  
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkJ-vd-16Z">
+                                <rect key="frame" x="16" y="609" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2545168798094104" green="0.45397646082603182" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Record Speech">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="onRecordButtonTap:" destination="BV1-FR-VrT" eventType="touchUpInside" id="USc-4b-nJw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,8 +65,9 @@
                         <viewLayoutGuide key="safeArea" id="fQZ-KI-GVf"/>
                     </view>
                     <connections>
-                        <outlet property="sceneView" destination="EO5-fy-WZq" id="YuC-8q-ovz"/>
                         <outlet property="subtitles" destination="AIV-40-3v4" id="Puu-sM-rD7"/>
+                        <outlet property="recordButton" destination="bkJ-vd-16Z" id="v3F-x5-DOt"/>
+                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
