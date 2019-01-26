@@ -10,7 +10,7 @@
 		62E6275821FCC6FF0013FD83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6275721FCC6FF0013FD83 /* AppDelegate.swift */; };
 		62E6275A21FCC6FF0013FD83 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E6275921FCC6FF0013FD83 /* art.scnassets */; };
 		62E6275C21FCC6FF0013FD83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6275B21FCC6FF0013FD83 /* ViewController.swift */; };
-		62E6275F21FCC6FF0013FD83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E6275D21FCC6FF0013FD83 /* Main.storyboard */; };
+		62E6275F21FCC6FF0013FD83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E6275D21FCC6FF0013FD83 /* Main.storyboard */; settings = {ASSET_TAGS = (recordButton, ); }; };
 		62E6276121FCC7000013FD83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62E6276021FCC7000013FD83 /* Assets.xcassets */; };
 		62E6276421FCC7000013FD83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62E6276221FCC7000013FD83 /* LaunchScreen.storyboard */; };
 		62E6276F21FCC7000013FD83 /* HeAR_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E6276E21FCC7000013FD83 /* HeAR_iOSTests.swift */; };
@@ -143,6 +143,9 @@
 		62E6274C21FCC6FF0013FD83 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					recordButton,
+				);
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Francesco Valela";
@@ -365,7 +368,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M34F646G6T;
+				DEVELOPMENT_TEAM = XNX37K6K44;
 				INFOPLIST_FILE = "HeAR-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -383,7 +386,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = M34F646G6T;
+				DEVELOPMENT_TEAM = XNX37K6K44;
 				INFOPLIST_FILE = "HeAR-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

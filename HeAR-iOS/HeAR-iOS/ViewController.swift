@@ -9,10 +9,15 @@
 import UIKit
 import SceneKit
 import ARKit
+import Speech
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    private let audioEngine = AVAudioEngine()
+    
+    @IBOutlet var recordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +43,32 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
         // Run the view's session
         sceneView.session.run(configuration)
+        
+        // Make the authorization request
+        SFSpeechRecognizer.requestAuthorization { authStatus in
+            
+            // The authorization status results in changes to the
+            // app’s interface, so process the results on the app’s
+            // main queue.
+            OperationQueue.main.addOperation {
+                switch authStatus {
+                case .authorized:
+                    self.recordButton.isEnabled = true
+                    
+                case .denied:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.setTitle("User denied accessto speech recognition", for: .disabled)
+                    
+                case .restricted:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.setTitle("Speech recognition restricted on this device", for: .disabled)
+                    
+                case .notDetermined:
+                    self.recordButton.isEnabled = false
+                    self.recordButton.setTitle("Speech recognition not yet authorized", for: .disabled)
+                }
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -70,6 +101,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
+        
+    }
+    
+    @IBAction func onRecordButtonTap(_ sender: UIButton) {
         
     }
 }
