@@ -10,6 +10,7 @@ import UIKit
 import SpriteKit
 import ARKit
 import Speech
+import Vision
 
 class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDelegate {
 
@@ -28,6 +29,23 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     private let audioEngine = AVAudioEngine()
     
     @IBOutlet var recordButton: UIButton!
+    
+    private var scanTimer: Timer?
+    
+    private var faceView: UIView?
+    
+    //get the orientation of the image that correspond's to the current device orientation
+    private var imageOrientation: CGImagePropertyOrientation {
+        switch UIDevice.current.orientation {
+        case .portrait: return .right
+        case .landscapeRight: return .down
+        case .portraitUpsideDown: return .left
+        case .unknown: fallthrough
+        case .faceUp: fallthrough
+        case .faceDown: fallthrough
+        case .landscapeLeft: return .up
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +87,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         // Run the view's session
         sceneView.session.run(configuration)
         
+        scanTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(scanForFaces), userInfo: nil, repeats: true)
+        
         // Make the authorization request
         SFSpeechRecognizer.requestAuthorization { authStatus in
             
@@ -99,7 +119,7 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Pause the view's session
+        scanTimer?.invalidate()
         sceneView.session.pause()
     }
     
@@ -221,5 +241,44 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                 recordButton.setTitle("Recording Not Available", for: [])
             }
         }
+    }
+    
+    @objc
+    private func scanForFaces() {
+        
+        //get the captured image of the ARSession's current frame
+        guard let capturedImage = sceneView.session.currentFrame?.capturedImage else { return }
+        
+        let image = CIImage.init(cvPixelBuffer: capturedImage)
+        
+        let detectFaceRequest = VNDetectFaceRectanglesRequest { (request, error) in
+            
+            //remove the test views and empty the array that was keeping a reference to them
+            self.faceView?.removeFromSuperview()
+            
+            DispatchQueue.main.async {
+                //Loop through the resulting faces and add a red UIView on top of them.
+                if let faces = request.results as? [VNFaceObservation] {
+                    if (!faces.isEmpty) {
+                        let faceView = UIView(frame: self.faceFrame(from: faces[0].boundingBox))
+                        faceView.backgroundColor = .red
+                        self.sceneView.addSubview(faceView)
+                    }
+                }
+            }
+        }
+        
+        DispatchQueue.global().async {
+            try? VNImageRequestHandler(ciImage: image, orientation: self.imageOrientation).perform([detectFaceRequest])
+        }
+    }
+    
+    private func faceFrame(from boundingBox: CGRect) -> CGRect {
+        
+        //translate camera frame to frame inside the ARSKView
+        let origin = CGPoint(x: boundingBox.minX * sceneView.bounds.width, y: (1 - boundingBox.maxY) * sceneView.bounds.height)
+        let size = CGSize(width: boundingBox.width * sceneView.bounds.width, height: boundingBox.height * sceneView.bounds.height)
+        
+        return CGRect(origin: origin, size: size)
     }
 }
