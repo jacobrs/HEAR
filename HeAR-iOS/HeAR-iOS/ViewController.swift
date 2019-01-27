@@ -42,10 +42,6 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         // Set the view's delegate
         sceneView.delegate = self
         
-        // Show statistics such as fps and node count
-        sceneView.showsFPS = true
-        sceneView.showsNodeCount = true
-        
         // Load the SKScene from 'Scene.sks'
         if let scene = SKScene(fileNamed: "Scene") {
             sceneView.presentScene(scene)
@@ -109,29 +105,27 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     // MARK: - ARSKViewDelegate
     
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-        // Create and configure a node for the anchor added to the view's session.
+        var node: SKLabelNode?
         
-        //labelNode = SKLabelNode(text: "")
-        labelNode = SKLabelNode(text: "")
-        labelNode?.fontColor = .white
-        labelNode?.horizontalAlignmentMode = .center
-        labelNode?.verticalAlignmentMode = .center
-        labelNode?.numberOfLines = 2
-        labelNode?.preferredMaxLayoutWidth = CGFloat(126.5)
-        labelNode?.lineBreakMode = .byClipping
+        if let anchor = anchor as? Anchor {
+            switch(anchor.type?.rawValue) {
+            case "frontLabel":
+                node = SKLabelNode(attributedText: NSMutableAttributedString(string: " ", attributes: attributes))
+                labelNode = node
+                break
+            default:
+                node = SKLabelNode(attributedText: NSMutableAttributedString(string: " ", attributes: attributes))
+                labelNode = node
+            }
+        }
+            
+        node?.horizontalAlignmentMode = .center
+        node?.verticalAlignmentMode = .center
+        node?.numberOfLines = 2
+        node?.preferredMaxLayoutWidth = CGFloat(126.5)
+        node?.lineBreakMode = .byTruncatingHead
         
-        shadowNode = SKLabelNode(text: "")
-        shadowNode?.fontColor = .black
-        shadowNode?.horizontalAlignmentMode = .center
-        shadowNode?.verticalAlignmentMode = .center
-        shadowNode?.numberOfLines = 2
-        shadowNode?.fontSize = (labelNode?.fontSize ?? 0) + 10
-        shadowNode?.zPosition = (labelNode?.zPosition ?? 0) + 1
-        shadowNode?.preferredMaxLayoutWidth = CGFloat(126.5)
-        shadowNode?.lineBreakMode = .byClipping
-    
-        
-        return labelNode;
+        return node;
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -150,9 +144,7 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     }
     
     func replaceSubtitles(newSubs: String) {
-        self.labelNode?.text = newSubs
-        self.shadowNode?.text = newSubs
-        
+        self.labelNode?.attributedText = NSAttributedString(string: newSubs, attributes: attributes)
     }
   
     private func startRecording() throws {
