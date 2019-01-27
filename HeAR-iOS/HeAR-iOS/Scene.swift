@@ -39,7 +39,7 @@ class Scene: SKScene {
             setUpWorld()
         }
         
-        if isWorldSetUp && isFaceSet && counter % 240 == 0 {
+        if isWorldSetUp && isFaceSet && counter % 600 == 0 {
             setUpWorld()
         }
         
@@ -60,8 +60,8 @@ class Scene: SKScene {
         let area = (1 + box.height * 5) * (1 + box.width * 5)
         let distance = Float(7-area)
         translation.columns.3.z = -distance
-        translation.columns.3.x = Float(facePosition?.x ?? 0)
-        translation.columns.3.y = Float(facePosition?.y ?? 0)
+        translation.columns.3.x = Float(facePosition?.x ?? 0) - 1/distance
+        translation.columns.3.y = Float(facePosition?.y ?? 0) - 1/distance
         let transform = currentFrame.camera.transform * translation
     
         // Add a new anchor to the session
