@@ -24,12 +24,15 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
   
     @IBOutlet weak var sceneView: ARSKView!
     
-    @IBOutlet var subtitles: UITextView!
-    
     private let audioEngine = AVAudioEngine()
     
     @IBOutlet var recordButton: UIButton!
     
+    var labelNode: SKLabelNode?
+    
+    var shadowNode: SKLabelNode?
+    
+    var attributes: [NSAttributedString.Key : Any]?
     private var scanTimer: Timer?
     
     private var scannedFaceViews = [UIView]()
@@ -50,14 +53,9 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        subtitles.textColor = .white
         
         // Set the view's delegate
         sceneView.delegate = self
-        
-        // Show statistics such as fps and node count
-        sceneView.showsFPS = true
-        sceneView.showsNodeCount = true
         
         // Load the SKScene from 'Scene.sks'
         if let scene = SKScene(fileNamed: "Scene") {
@@ -66,8 +64,6 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
-        
-        self.applyDropShadow()
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -126,11 +122,34 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     // MARK: - ARSKViewDelegate
     
     func view(_ view: ARSKView, nodeFor anchor: ARAnchor) -> SKNode? {
-        // Create and configure a node for the anchor added to the view's session.
-        let labelNode = SKLabelNode(text: "👾")
-        labelNode.horizontalAlignmentMode = .center
-        labelNode.verticalAlignmentMode = .center
-        return labelNode;
+        var node: SKLabelNode?
+        
+        if let anchor = anchor as? Anchor {
+            attributes = [.strokeWidth: -3.0,
+                          .strokeColor: UIColor.black,
+                          .foregroundColor: UIColor.white,
+                          .font: UIFont(name: "Arial-BoldMT", size: CGFloat(((anchor.size ?? 0.0) + 1.0) * 10.0 ))!]
+
+            switch(anchor.type?.rawValue) {
+            case "frontLabel":
+                node = SKLabelNode(attributedText: NSMutableAttributedString(string: " ", attributes: attributes))
+                labelNode = node
+                node?.preferredMaxLayoutWidth = CGFloat(((anchor.size ?? 5.0) + 1.0) * 75.0)
+                break
+            default:
+                node = SKLabelNode(attributedText: NSMutableAttributedString(string: " ", attributes: attributes))
+                labelNode = node
+                node?.preferredMaxLayoutWidth = CGFloat(anchor.size ?? 5 * 75.0)
+            }
+        }
+        
+        node?.horizontalAlignmentMode = .center
+        node?.verticalAlignmentMode = .center
+        node?.numberOfLines = 2
+        
+        node?.lineBreakMode = .byTruncatingHead
+        
+        return node;
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
@@ -149,15 +168,7 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     }
     
     func replaceSubtitles(newSubs: String) {
-        self.subtitles.text = newSubs
-    }
-    
-    func applyDropShadow() {
-        self.subtitles.layer.shadowColor = UIColor.black.cgColor
-        self.subtitles.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.subtitles.layer.shadowOpacity = 1.0
-        self.subtitles.layer.shadowRadius = 1.0
-        self.subtitles.clipsToBounds = false
+        self.labelNode?.attributedText = NSAttributedString(string: newSubs, attributes: attributes)
     }
   
     private func startRecording() throws {
@@ -267,8 +278,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                         faceView.backgroundColor = .red
                         
                         self?.sceneView.addSubview(faceView)
-                        
                         self?.scannedFaceViews.append(faceView)
+                        (self?.sceneView.scene as! Scene).setFace(face: face.landmarks?.outerLips, boundingBox: face.boundingBox)
                         i = i + 1
                     }
                 }
