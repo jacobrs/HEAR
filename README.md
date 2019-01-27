@@ -5,10 +5,12 @@ HEAR is an iOS application that listens to a speaker using a phone camera and mi
 
 ### Technologies<br><br>
 
+<div style="display:inline-block">
 <img height="64px" src="https://developer.apple.com/assets/elements/icons/arkit/arkit-64x64_2x.png"/>
 <img height="64px" src="https://developer.apple.com/assets/elements/icons/core-ml/core-ml-128x128_2x.png"/>
 <img height="64px" src="https://developer.apple.com/assets/elements/icons/sirikit/sirikit-96x96_2x.png">
 <img height="64px" src="https://developer.apple.com/assets/elements/icons/spritekit/spritekit-128x128_2x.png">
+</div>
 
 #### ARKit 2
 The ARKit 2 was used to capture objects in a 3D scene and attach subtitle nodes to them allowing the subtitles to follow speakers. Subtitle text size is dictated based off distance which would not be possible without ARKit.
