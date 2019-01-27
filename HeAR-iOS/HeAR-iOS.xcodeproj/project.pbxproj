@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		62406DEC21FD41090027EFC4 /* Anchor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62406DEB21FD41090027EFC4 /* Anchor.swift */; };
+		62406DF021FD9CC90027EFC4 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62406DEF21FD9CC90027EFC4 /* util.swift */; };
 		62ABE33821FCCEF5000F4E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABE33721FCCEF5000F4E83 /* AppDelegate.swift */; };
 		62ABE33A21FCCEF5000F4E83 /* Scene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 62ABE33921FCCEF5000F4E83 /* Scene.sks */; };
 		62ABE33C21FCCEF5000F4E83 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62ABE33B21FCCEF5000F4E83 /* Scene.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		62406DEB21FD41090027EFC4 /* Anchor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anchor.swift; sourceTree = "<group>"; };
+		62406DEF21FD9CC90027EFC4 /* util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		62ABE33421FCCEF5000F4E83 /* HeAR-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HeAR-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62ABE33721FCCEF5000F4E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62ABE33921FCCEF5000F4E83 /* Scene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Scene.sks; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				62ABE34421FCCEF6000F4E83 /* LaunchScreen.storyboard */,
 				62ABE34721FCCEF6000F4E83 /* Info.plist */,
 				62406DEB21FD41090027EFC4 /* Anchor.swift */,
+				62406DEF21FD9CC90027EFC4 /* util.swift */,
 			);
 			path = "HeAR-iOS";
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				62ABE33E21FCCEF5000F4E83 /* ViewController.swift in Sources */,
 				62ABE33C21FCCEF5000F4E83 /* Scene.swift in Sources */,
 				62406DEC21FD41090027EFC4 /* Anchor.swift in Sources */,
+				62406DF021FD9CC90027EFC4 /* util.swift in Sources */,
 				62ABE33821FCCEF5000F4E83 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

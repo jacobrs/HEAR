@@ -39,11 +39,9 @@ class Scene: SKScene {
             setUpWorld()
         }
         
-        if isWorldSetUp && isFaceSet && counter % 600 == 0 {
+        if isWorldSetUp && isFaceSet {
             setUpWorld()
         }
-        
-        counter = counter + 1
     }
     
     private func setUpWorld() {
@@ -51,6 +49,7 @@ class Scene: SKScene {
             else { return }
         
         isWorldSetUp = true
+        isFaceSet = false
     
         // Create a transform with a translation of 0.2 meters in front of the camera
         var translation = matrix_identity_float4x4
