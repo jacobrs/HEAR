@@ -252,7 +252,7 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         self.maxSubtitlePtr = Util.MAX_CAPATION_LABEL_SIZE
         
         // Let the user know to start talking.
-        self.recognizedText = ""
+        self.recognizedText = " "
     }
     
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
