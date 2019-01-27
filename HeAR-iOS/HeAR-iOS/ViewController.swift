@@ -33,6 +33,9 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     var shadowNode: SKLabelNode?
     
     var attributes: [NSAttributedString.Key : Any]?
+    
+    var subtitleColor: UIColor = UIColor.white
+    
     private var scanTimer: Timer?
     
     private var currentSubtitlePtr: Int = 0
@@ -43,6 +46,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     private var newSubs: String = " "
     
     private var isFaceSet = false
+    
+    
     
     //get the orientation of the image that correspond's to the current device orientation
     private var imageOrientation: CGImagePropertyOrientation {
@@ -71,6 +76,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
         UIDevice.current.setValue(value, forKey: "orientation")
+        
+        recordButton.setImage(UIImage(named: "iconfinder_ic_mic_white_bg"), for:[])
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -132,10 +139,13 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         var node: SKLabelNode?
         
         if let anchor = anchor as? Anchor {
+            let paragraph = NSMutableParagraphStyle()
+            paragraph.alignment = .center
             attributes = [.strokeWidth: -3.0,
                           .strokeColor: UIColor.black,
-                          .foregroundColor: UIColor.white,
-                          .font: UIFont(name: "Arial-BoldMT", size: CGFloat(((anchor.size ?? 0.0) + 1.0) * 10.0 ))!]
+                          .foregroundColor: subtitleColor,
+                          .font: UIFont(name: "HelveticaNeue-Bold", size: CGFloat(((anchor.size ?? 0.0) + 1.0) * 12.0 ))!,
+                          .paragraphStyle: paragraph]
             switch(anchor.type?.rawValue) {
             case "frontLabel":
                 node = SKLabelNode(attributedText: NSMutableAttributedString(string: newSubs, attributes: attributes))
@@ -176,7 +186,28 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     func replaceSubtitles() {
         self.labelNode?.attributedText = NSAttributedString(string: self.newSubs, attributes: attributes)
     }
-  
+    
+    
+    @IBAction func onWhiteSubtitlesPressed(_ sender: Any) {
+        subtitleColor = UIColor.white
+        attributes?[.foregroundColor] = UIColor.white
+        replaceSubtitles()
+        
+    }
+    
+    @IBAction func onYellowSubtitlesPressed(_ sender: Any) {
+        subtitleColor = UIColor.yellow
+        attributes?[.foregroundColor] = UIColor.yellow
+        replaceSubtitles()
+    }
+    
+    
+    @IBAction func onCyanSubtitlesPressed(_ sender: Any) {
+        subtitleColor = UIColor.cyan
+        attributes?[.foregroundColor] = UIColor.cyan
+        replaceSubtitles()
+    }
+    
     private func startRecording() throws {
         
         // Cancel the previous task if it's running.
@@ -267,12 +298,14 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     
     @IBAction func onRecordButtonTap(_ sender: UIButton) {
         if audioEngine.isRunning {
+            recordButton.setImage(UIImage(named: "iconfinder_ic_mic_white_bg"), for:[])
             audioEngine.stop()
             recognitionRequest?.endAudio()
             recordButton.isEnabled = false
             recordButton.setTitle("Stopping", for: .disabled)
         } else {
             do {
+                recordButton.setImage(UIImage(named: "iconfinder_ic_mic_darkgrey_bg"), for:[])
                 self.isFaceSet = false
                 self.newSubs = " "
                 self.currentSubtitlePtr = 0
@@ -283,7 +316,6 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                 recordButton.setTitle("Recording Not Available", for: [])
             }
         }
-        
     }
     
     @objc

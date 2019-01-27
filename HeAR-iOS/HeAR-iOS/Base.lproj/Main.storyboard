@@ -21,15 +21,38 @@
                             <arskView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EO5-fy-WZq">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                             </arskView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkJ-vd-16Z">
-                                <rect key="frame" x="513" y="20" width="120" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkJ-vd-16Z">
+                                <rect key="frame" x="20" y="135" width="93" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.2545168798094104" green="0.45397646082603182" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Record Speech">
+                                <state key="normal">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="onRecordButtonTap:" destination="BV1-FR-VrT" eventType="touchUpInside" id="USc-4b-nJw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfr-sq-2lw">
+                                <rect key="frame" x="530" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="color_white"/>
+                                <connections>
+                                    <action selector="onWhiteSubtitlesPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="EKO-Tz-2ch"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQ7-eP-9On">
+                                <rect key="frame" x="624" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="color_cyan"/>
+                                <connections>
+                                    <action selector="onCyanSubtitlesPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="geH-ZF-Hzp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kom-Nb-dn0">
+                                <rect key="frame" x="577" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="color_yellow"/>
+                                <connections>
+                                    <action selector="onYellowSubtitlesPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="6PL-hC-1QS"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -52,4 +75,9 @@
             <point key="canvasLocation" x="136.28185907046478" y="132"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="color_cyan" width="512" height="512"/>
+        <image name="color_white" width="512" height="512"/>
+        <image name="color_yellow" width="512" height="512"/>
+    </resources>
 </document>
