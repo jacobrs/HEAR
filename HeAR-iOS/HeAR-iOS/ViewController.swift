@@ -37,6 +37,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     
     private var scannedFaceViews = [UIView]()
     
+    private var newSubs: String = " "
+    
     //get the orientation of the image that correspond's to the current device orientation
     private var imageOrientation: CGImagePropertyOrientation {
         switch UIDevice.current.orientation {
@@ -129,15 +131,14 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                           .strokeColor: UIColor.black,
                           .foregroundColor: UIColor.white,
                           .font: UIFont(name: "Arial-BoldMT", size: CGFloat(((anchor.size ?? 0.0) + 1.0) * 10.0 ))!]
-
             switch(anchor.type?.rawValue) {
             case "frontLabel":
-                node = SKLabelNode(attributedText: NSMutableAttributedString(string: " ", attributes: attributes))
+                node = SKLabelNode(attributedText: NSMutableAttributedString(string: newSubs, attributes: attributes))
                 labelNode = node
-                node?.preferredMaxLayoutWidth = CGFloat(((anchor.size ?? 5.0) + 1.0) * 75.0)
+                node?.preferredMaxLayoutWidth = CGFloat(((anchor.size ?? 5.0) + 1.0) * 125.0)
                 break
             default:
-                node = SKLabelNode(attributedText: NSMutableAttributedString(string: " ", attributes: attributes))
+                node = SKLabelNode(attributedText: NSMutableAttributedString(string: newSubs, attributes: attributes))
                 labelNode = node
                 node?.preferredMaxLayoutWidth = CGFloat(anchor.size ?? 5 * 75.0)
             }
@@ -167,8 +168,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         
     }
     
-    func replaceSubtitles(newSubs: String) {
-        self.labelNode?.attributedText = NSAttributedString(string: newSubs, attributes: attributes)
+    func replaceSubtitles() {
+        self.labelNode?.attributedText = NSAttributedString(string: self.newSubs, attributes: attributes)
     }
   
     private func startRecording() throws {
@@ -198,7 +199,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
             if let result = result {
                 // Update the text view with the results.
                 self.recognizedText = result.bestTranscription.formattedString
-                self.replaceSubtitles(newSubs: self.recognizedText)
+                self.newSubs = self.recognizedText
+                self.replaceSubtitles()
                 isFinal = result.isFinal
             }
             
