@@ -28,7 +28,8 @@ Speech to text is the most important feature of HEAR and for that reason, the Si
 HEAR uses SpriteKit to overlay the subtitles in the 3D rendered by ARKit. SpriteKit also allows text customization to make the text clearer and more legible on varying backgrounds.
 
 ### Demo
-Simple scenario where a someone might be lecturing.
+Simple scenario where a someone might be lecturing.<br>
+![Demo Gif](https://github.com/jacobrs/HEAR/raw/master/demo.gif)
 
 ### Future Plans
 The HEAR team has many ambitious plans for the application some of which include:
