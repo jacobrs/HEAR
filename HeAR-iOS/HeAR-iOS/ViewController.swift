@@ -129,7 +129,6 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                           .strokeColor: UIColor.black,
                           .foregroundColor: UIColor.white,
                           .font: UIFont(name: "Arial-BoldMT", size: CGFloat(((anchor.size ?? 0.0) + 1.0) * 10.0 ))!]
-//                                          .font: UIFont(name: "Arial", size: CGFloat(40.0))!]
 
             switch(anchor.type?.rawValue) {
             case "frontLabel":
