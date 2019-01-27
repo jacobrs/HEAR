@@ -36,11 +36,13 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     private var scanTimer: Timer?
     
     private var currentSubtitlePtr: Int = 0
-    private var maxSubtitlePtr: Int = 50
+    private var maxSubtitlePtr: Int = Util.MAX_CAPATION_LABEL_SIZE
     
     private var scannedFaceViews = [UIView]()
     
     private var newSubs: String = " "
+    
+    private var isFaceSet = false
     
     //get the orientation of the image that correspond's to the current device orientation
     private var imageOrientation: CGImagePropertyOrientation {
@@ -203,16 +205,23 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                 // Update the text view with the results.
                 self.recognizedText = result.bestTranscription.formattedString
                 if(self.recognizedText.count - self.currentSubtitlePtr > self.maxSubtitlePtr){
+                    
                     // entire recognized text does not fit in the label
-                    let lastSpace = self.findLastSpace(str: self.substring(
-                        str: self.recognizedText, front: self.currentSubtitlePtr,
-                        back: (self.currentSubtitlePtr%self.maxSubtitlePtr)-self.maxSubtitlePtr))+1
+                    let innerSub = self.substring(str: self.recognizedText, front: self.currentSubtitlePtr, back: -(self.recognizedText.count - (self.currentSubtitlePtr + self.maxSubtitlePtr/2)))
+                    let lastSpace = self.findLastSpace(str: innerSub)+1
                     self.currentSubtitlePtr = self.currentSubtitlePtr + lastSpace
                     self.newSubs = self.substring(str: self.recognizedText, front: self.currentSubtitlePtr, back: 0)
                 }else{
+                    if (self.currentSubtitlePtr > self.recognizedText.count) {
+                        self.currentSubtitlePtr = 0
+                        let innerSub = self.substring(str: self.recognizedText, front: self.currentSubtitlePtr, back: -self.maxSubtitlePtr/2)
+                        let lastSpace = self.findLastSpace(str: innerSub)+1
+                        self.currentSubtitlePtr = self.currentSubtitlePtr + lastSpace
+                    }
                     self.newSubs = self.substring(
                         str: self.recognizedText, front: self.currentSubtitlePtr, back: 0)
                 }
+                
                 self.replaceSubtitles()
                 isFinal = result.isFinal
             }
@@ -240,10 +249,10 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         try audioEngine.start()
         
         self.currentSubtitlePtr = 0
-        self.maxSubtitlePtr = 50
+        self.maxSubtitlePtr = Util.MAX_CAPATION_LABEL_SIZE
         
         // Let the user know to start talking.
-        self.recognizedText = "(Go ahead, I'm listening)"
+        self.recognizedText = " "
     }
     
     public func speechRecognizer(_ speechRecognizer: SFSpeechRecognizer, availabilityDidChange available: Bool) {
@@ -264,12 +273,17 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
             recordButton.setTitle("Stopping", for: .disabled)
         } else {
             do {
+                self.isFaceSet = false
+                self.newSubs = " "
+                self.currentSubtitlePtr = 0
+                self.maxSubtitlePtr = Util.MAX_CAPATION_LABEL_SIZE
                 try startRecording()
                 recordButton.setTitle("Stop Recording", for: [])
             } catch {
                 recordButton.setTitle("Recording Not Available", for: [])
             }
         }
+        
     }
     
     @objc
@@ -295,9 +309,11 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                         
                         faceView.backgroundColor = .red
                         
-                        //self?.sceneView.addSubview(faceView)
-                        //self?.scannedFaceViews.append(faceView)
-                        (self?.sceneView.scene as! Scene).setFace(face: face.landmarks?.outerLips, boundingBox: face.boundingBox)
+                        if(!(self?.isFaceSet)!) {
+                            (self?.sceneView.scene as! Scene).setFace(face: face.landmarks?.outerLips, boundingBox: face.boundingBox)
+                            self?.isFaceSet = true
+                        }
+                        
                         i = i + 1
                     }
                 }
