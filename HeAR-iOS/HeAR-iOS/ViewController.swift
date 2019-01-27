@@ -22,7 +22,7 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     
     private var recognizedText: String = ""
   
-    @IBOutlet var sceneView: ARSKView!
+    @IBOutlet weak var sceneView: ARSKView!
     
     @IBOutlet var subtitles: UITextView!
     
@@ -255,26 +255,28 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         
         let image = CIImage.init(cvPixelBuffer: capturedImage)
         
-        let detectFaceRequest = VNDetectFaceRectanglesRequest { (request, error) in
+        let detectFaceRequest = VNDetectFaceRectanglesRequest { [weak self] (request, error) in
             
             DispatchQueue.main.async {
                 //Loop through the resulting faces and add a red UIView on top of them.
                 if let faces = request.results as? [VNFaceObservation] {
                     for face in faces {
-                        let faceView = UIView(frame: self.faceFrame(from: face.boundingBox))
+                        let faceView = UIView(frame: (self?.faceFrame(from: face.boundingBox))!)
                         
                         faceView.backgroundColor = .red
                         
-                        self.sceneView.addSubview(faceView)
+                        self?.sceneView.addSubview(faceView)
                         
-                        self.scannedFaceViews.append(faceView)
+                        self?.scannedFaceViews.append(faceView)
                     }
                 }
             }
         }
         
-        DispatchQueue.global().async {
-            try? VNImageRequestHandler(ciImage: image, orientation: self.imageOrientation).perform([detectFaceRequest])
+        DispatchQueue.main.async { [weak self] in
+            if let self = self {
+                try? VNImageRequestHandler(ciImage: image, orientation: self.imageOrientation).perform([detectFaceRequest])
+            }
         }
     }
     
