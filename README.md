@@ -1,7 +1,7 @@
 ## HEAR - Generating Subtitles for Life
 
 ### Introduction
-HEAR is an iOS application that listens to a speaker using a phone camera and microphone and adds subtitles under them to allow the hearing impaired to understand what they are saying. The application works best in quiet areas with minimal background noise. Subtitles track human faces and attempt to follow them in the augmented reality scene.
+HEAR is an iOS application that listens to a speaker using a phone camera and microphone, then adds subtitles under them to allow the hearing impaired to understand what they are saying. The application works best in quiet areas with minimal background noise. Subtitles track human faces and attempt to follow them in the augmented reality scene.
 
 ### Technologies<br><br>
 
@@ -24,6 +24,9 @@ Speech to text is the most important feature of HEAR and for that reason, the Si
 #### SpriteKit
 HEAR uses SpriteKit to overlay the subtitles in the 3D rendered by ARKit. SpriteKit also allows text customization to make the text clearer and more legible on varying backgrounds.
 
+### Demo
+Simple scenario where a someone might be lecturing.
+
 ### Future Plans
 The HEAR team has many ambitious plans for the application some of which include:
 * Simultaneous speakers and subtitles
@@ -31,6 +34,10 @@ The HEAR team has many ambitious plans for the application some of which include
 * Higher accuracy in noisy environments
 * Syncing of conversations to cloud for later review
 * Integration into augmented reality lenses
+* Real time translation of subtitles
+
+### Authors
+Benjamin Barault, Frankie Valela, Jacob Gagné, Tobi Décary-Larocque
 
 <br><br>
 
