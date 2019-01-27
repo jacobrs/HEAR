@@ -1,7 +1,5 @@
 ## HEAR - Generating Subtitles for Life
 
-!-- todo add logo -->
-
 ### Introduction
 HEAR is an iOS application that listens to a speaker using a phone camera and microphone, then adds subtitles under them to allow the hearing impaired to understand what they are saying. The application works best in quiet areas with minimal background noise. Subtitles track human faces and attempt to follow them in the augmented reality scene.
 
@@ -11,10 +9,10 @@ Inspired by a recent conference talk on accessibility as well as family members 
 ### Technologies<br><br>
 
 <div style="display:inline-block">
-  <img height="64px" src="https://developer.apple.com/assets/elements/icons/arkit/arkit-64x64_2x.png"/>
-  <img height="64px" src="https://developer.apple.com/assets/elements/icons/core-ml/core-ml-128x128_2x.png"/>
-  <img height="64px" src="https://developer.apple.com/assets/elements/icons/sirikit/sirikit-96x96_2x.png">
-  <img height="64px" src="https://developer.apple.com/assets/elements/icons/spritekit/spritekit-128x128_2x.png">
+  <img src="https://developer.apple.com/assets/elements/icons/arkit/arkit-64x64_2x.png"/>
+  <img src="https://developer.apple.com/assets/elements/icons/core-ml/core-ml-64x64_2x.png"/>
+  <img src="https://developer.apple.com/assets/elements/icons/sirikit/sirikit-64x64_2x.png">
+  <img src="https://developer.apple.com/assets/elements/icons/spritekit/spritekit-64x64_2x.png">
 </div>
 
 #### ARKit 2
