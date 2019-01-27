@@ -245,7 +245,6 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     
     @objc
     private func scanForFaces() {
-        
         //remove the test views and empty the array that was keeping a reference to them
         _ = scannedFaceViews.map { $0.removeFromSuperview() }
         scannedFaceViews.removeAll()
@@ -260,14 +259,17 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
             DispatchQueue.main.async {
                 //Loop through the resulting faces and add a red UIView on top of them.
                 if let faces = request.results as? [VNFaceObservation] {
+                    var i = 0
                     for face in faces {
-                        let faceView = UIView(frame: (self?.faceFrame(from: face.boundingBox))!)
+                        let faceView = UITextView(frame: (self?.faceFrame(from: face.boundingBox))!)
+                        faceView.text = "Face: " + String.init(i)
                         
                         faceView.backgroundColor = .red
                         
                         self?.sceneView.addSubview(faceView)
                         
                         self?.scannedFaceViews.append(faceView)
+                        i = i + 1
                     }
                 }
             }
