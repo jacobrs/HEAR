@@ -205,7 +205,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                 if(self.recognizedText.count - self.currentSubtitlePtr > self.maxSubtitlePtr){
                     // entire recognized text does not fit in the label
                     let lastSpace = self.findLastSpace(str: self.substring(
-                        str: self.recognizedText, front: self.currentSubtitlePtr, back: self.currentSubtitlePtr-self.maxSubtitlePtr))+1
+                        str: self.recognizedText, front: self.currentSubtitlePtr,
+                        back: (self.currentSubtitlePtr%self.maxSubtitlePtr)-self.maxSubtitlePtr))+1
                     self.currentSubtitlePtr = self.currentSubtitlePtr + lastSpace
                     self.newSubs = self.substring(str: self.recognizedText, front: self.currentSubtitlePtr, back: 0)
                 }else{
@@ -217,8 +218,6 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
             }
             
             if error != nil || isFinal {
-                self.currentSubtitlePtr = 0
-                self.maxSubtitlePtr = 50
                 // Stop recognizing speech if there is a problem.
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
@@ -239,6 +238,9 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         
         audioEngine.prepare()
         try audioEngine.start()
+        
+        self.currentSubtitlePtr = 0
+        self.maxSubtitlePtr = 50
         
         // Let the user know to start talking.
         self.recognizedText = "(Go ahead, I'm listening)"
