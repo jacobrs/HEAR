@@ -35,6 +35,9 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     var attributes: [NSAttributedString.Key : Any]?
     private var scanTimer: Timer?
     
+    private var currentSubtitlePtr: Int = 0
+    private var maxSubtitlePtr: Int = 50
+    
     private var scannedFaceViews = [UIView]()
     
     //get the orientation of the image that correspond's to the current device orientation
@@ -198,11 +201,23 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
             if let result = result {
                 // Update the text view with the results.
                 self.recognizedText = result.bestTranscription.formattedString
-                self.replaceSubtitles(newSubs: self.recognizedText)
+                if(self.recognizedText.count - self.currentSubtitlePtr > self.maxSubtitlePtr){
+                    // entire recognized text does not fit in the label
+                    let lastSpace = self.findLastSpace(str: self.substring(
+                        str: self.recognizedText, front: self.currentSubtitlePtr, back: self.currentSubtitlePtr-self.maxSubtitlePtr))+1
+                    self.currentSubtitlePtr = self.currentSubtitlePtr + lastSpace
+                    self.replaceSubtitles(newSubs: self.substring(str: self.recognizedText, front: self.currentSubtitlePtr, back: 0))
+                }else{
+                    self.replaceSubtitles(newSubs: self.substring(
+                        str: self.recognizedText, front: self.currentSubtitlePtr, back: 0))
+                }
+                
                 isFinal = result.isFinal
             }
             
             if error != nil || isFinal {
+                self.currentSubtitlePtr = 0
+                self.maxSubtitlePtr = 50
                 // Stop recognizing speech if there is a problem.
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
@@ -277,8 +292,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                         
                         faceView.backgroundColor = .red
                         
-                        self?.sceneView.addSubview(faceView)
-                        self?.scannedFaceViews.append(faceView)
+                        //self?.sceneView.addSubview(faceView)
+                        //self?.scannedFaceViews.append(faceView)
                         (self?.sceneView.scene as! Scene).setFace(face: face.landmarks?.outerLips, boundingBox: face.boundingBox)
                         i = i + 1
                     }
@@ -300,5 +315,25 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         let size = CGSize(width: boundingBox.width * sceneView.bounds.width, height: boundingBox.height * sceneView.bounds.height)
         
         return CGRect(origin: origin, size: size)
+    }
+    
+    private func substring(str: String, front: Int, back: Int) -> String{
+        let start = str.index(str.startIndex, offsetBy: front)
+        let end = str.index(str.endIndex, offsetBy: back)
+        let range = start..<end
+        
+        return String(str[range])
+    }
+    
+    private func findLastSpace(str: String) -> Int {
+        var lastIdx = 0
+        var i = 0
+        for c in str {
+            if(c == " "){
+                lastIdx = i
+            }
+            i = i + 1
+        }
+        return lastIdx
     }
 }
