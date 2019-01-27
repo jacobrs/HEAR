@@ -32,9 +32,7 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
     
     var shadowNode: SKLabelNode?
     
-    let attributes: [NSAttributedString.Key : Any] = [.strokeWidth: -2.0,
-                                                      .strokeColor: UIColor.black,
-                                                      .foregroundColor: UIColor.white]
+    var attributes: [NSAttributedString.Key : Any]?
     private var scanTimer: Timer?
     
     private var scannedFaceViews = [UIView]()
@@ -127,21 +125,29 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         var node: SKLabelNode?
         
         if let anchor = anchor as? Anchor {
+            attributes = [.strokeWidth: -3.0,
+                          .strokeColor: UIColor.black,
+                          .foregroundColor: UIColor.white,
+                          .font: UIFont(name: "Arial-BoldMT", size: CGFloat(((anchor.size ?? 0.0) + 1.0) * 10.0 ))!]
+//                                          .font: UIFont(name: "Arial", size: CGFloat(40.0))!]
+
             switch(anchor.type?.rawValue) {
             case "frontLabel":
                 node = SKLabelNode(attributedText: NSMutableAttributedString(string: " ", attributes: attributes))
                 labelNode = node
+                node?.preferredMaxLayoutWidth = CGFloat(((anchor.size ?? 5.0) + 1.0) * 75.0)
                 break
             default:
                 node = SKLabelNode(attributedText: NSMutableAttributedString(string: " ", attributes: attributes))
                 labelNode = node
+                node?.preferredMaxLayoutWidth = CGFloat(anchor.size ?? 5 * 75.0)
             }
         }
-            
+        
         node?.horizontalAlignmentMode = .center
         node?.verticalAlignmentMode = .center
         node?.numberOfLines = 2
-        node?.preferredMaxLayoutWidth = CGFloat(126.5)
+        
         node?.lineBreakMode = .byTruncatingHead
         
         return node;
@@ -273,8 +279,8 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
                         faceView.backgroundColor = .red
                         
                         self?.sceneView.addSubview(faceView)
-                        
                         self?.scannedFaceViews.append(faceView)
+                        (self?.sceneView.scene as! Scene).setFace(face: face.landmarks?.outerLips, boundingBox: face.boundingBox)
                         i = i + 1
                     }
                 }

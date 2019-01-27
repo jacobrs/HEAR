@@ -16,4 +16,5 @@ enum NodeType: String {
 
 class Anchor: ARAnchor {
     var type: NodeType?
+    var size: Float?
 }
