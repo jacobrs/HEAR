@@ -318,10 +318,6 @@ class ViewController: UIViewController, ARSKViewDelegate, SFSpeechRecognizerDele
         }
     }
     
-    func setMicrophoneButton() {
-        
-    }
-    
     @objc
     private func scanForFaces() {
         //remove the test views and empty the array that was keeping a reference to them
